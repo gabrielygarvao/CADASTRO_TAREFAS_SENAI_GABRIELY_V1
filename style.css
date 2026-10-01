@@ -1,19 +1,19 @@
 /* variaveis para facilidade de temas (limpo e tons pasteis) */
 
 :root {
-    --gradiente-fundo: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    --gradiente-fundo: linear-gradient(45deg, #68c0ff 0%, #e62828 100%);
     --fundo-cartao: #ffffff;
     --cor-texto: #2d3748;
-    --cor-primaria: #6c5ce7;
-    --cor-primaria-destaque: #5b4bc4;
+    --cor-primaria: #5c8fe7;
+    --cor-primaria-destaque: #427fe8;
     --cor-borda: #edf2f7;
-    --cor-perigo: #ff7675;
+    --cor-perigo: #e74a4a;
     --cor-concluido: #a0aec0;
 }
 
 /* modo escuro */
 body.modo-escuro {
-    --gradiente-fundo: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    --gradiente-fundo: linear-gradient(135deg, #0d2652 0%, #2a3c5c 100%);
     --fundo-cartao: #1a202c;
     --cor-texto: #f7fafc;
     --cor-borda: #4a5568;
@@ -23,7 +23,7 @@ body.modo-escuro {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     transition: background 0.3s, color 0.3s;
 }
 
@@ -53,12 +53,10 @@ body {
     margin-bottom: 25px;
 }
 
-
 .cabecalho-aplicacao h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
 }
-
 
 .botao-icone {
     background: transparent;
@@ -149,6 +147,60 @@ input[type="text"]:focus {
     font-size: 0.85rem;
     color: var(--cor-concluido);
     text-align: center;
+}
+
+.rodape-aplicacao {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-items: center;
+    gap: 8px 15px;
+    margin-top: 25px;
+}
+
+/* "0 tarefas na lista" fica no topo, ocupando tudo */
+#contador-tarefas {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Foto da Mia */
+.rodape-aplicacao img:first-of-type {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* "Mãe da Mia:" fica no meio */
+#textogaby {
+    grid-column: 2;
+    grid-row: 2;
+    color: var(--cor-texto);
+    font-size: 0.9rem;
+}
+
+/* Sua foto */
+.rodape-aplicacao img:last-of-type {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.foto-pequena {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--cor-primaria);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.foto-pequena:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes aparecer{
