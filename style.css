@@ -8,13 +8,17 @@
     --cor-primaria-destaque: #427fe8;
     --cor-borda: #edf2f7;
     --cor-perigo: #e74a4a;
+    --cor-editar: #e8b834;
+    --cor-concluir: #61c522;
     --cor-concluido: #a0aec0;
+    --botao: #1a202c;
 }
 
 /* modo escuro */
 body.modo-escuro {
     --gradiente-fundo: linear-gradient(135deg, #0d2652 0%, #2a3c5c 100%);
     --fundo-cartao: #1a202c;
+    --botao: #ffffff;
     --cor-texto: #f7fafc;
     --cor-borda: #4a5568;
 }
@@ -142,6 +146,14 @@ input[type="text"]:focus {
     color:var(--cor-perigo);
 }
 
+.botao-acao.editar:hover{
+    color:var(--cor-editar);
+}
+
+.botao-acao:hover{
+    color:var(--cor-concluir);
+}
+
 .rodape-aplicacao{
     margin-top: 15px;
     font-size: 0.85rem;
@@ -201,6 +213,43 @@ input[type="text"]:focus {
 .foto-pequena:hover {
     transform: scale(1.08);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+#botao-limpar {
+    display: block;
+    margin: 15px auto;
+    padding: 10px 18px;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.2s;
+}
+
+#botao-limpar:hover {
+    background: var(--cor-primaria-destaque);
+    transform: translateY(-2px);
+}
+
+#botao-aviso {
+    display: block;
+    margin: 5px auto;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 7px;
+    background: var(--cor-primaria);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#botao-aviso:hover {
+    background: var(--cor-primaria-destaque);
+    opacity: 1;
 }
 
 @keyframes aparecer{

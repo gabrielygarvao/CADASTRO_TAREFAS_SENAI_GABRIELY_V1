@@ -52,9 +52,9 @@ function renderizarLista() {
         }
 
         item.innerHTML = `
-            <span onclick="marcarTarefa(${index})">
-                ${tarefa.nome}
-            </span>
+        <span class="nome-tarefa" onclick="marcarTarefa(${index})">
+            ${tarefa.nome}
+        </span>
             
             <div class="acoes-tarefa">
 
@@ -71,6 +71,13 @@ function renderizarLista() {
             title="Remover tarefa">
             <i class="fa-solid fa-trash"></i>
         </button>
+
+        <button 
+        class="botao-acao editar" 
+        onclick="editarTarefa(${index})"
+        title="Editar tarefa">
+        <i class="fa-solid fa-edit"></i>
+        </button>
     </div>`;
 
         listaHTML.appendChild(item);
@@ -80,10 +87,8 @@ function renderizarLista() {
 }
 
 // MARCAR / DESMARCAR TAREFA
-
 function marcarTarefa(index) {
     listaDeTarefas[index].marcarComoPronta();
-
     renderizarLista();
 }
 
@@ -93,12 +98,39 @@ function removerTarefa(index) {
     renderizarLista();
 }
 
+// EDITAR TAREFA
+function editarTarefa(index) {
+    const nome = document.querySelectorAll(".nome-tarefa")[index];
+
+    nome.contentEditable = true;
+    nome.focus();
+
+    nome.onblur = function () {
+        listaDeTarefas[index].nome = nome.innerText();
+        nome.contentEditable = false;
+    };
+}
+
+// LIMPAR TODAS AS TAREFAS
+function limparConcluidas() {
+    for (let i = listaDeTarefas.length - 1; i >= 0; i--) {
+        if (listaDeTarefas[i].pronta) {
+            listaDeTarefas.splice(i, 1);
+        }
+    }
+    renderizarLista();
+}
+
 // CONTADOR
 function atualizarContador() {
 
     const quantidade = listaDeTarefas.length;
     contador.textContent =
         `${quantidade} ${quantidade === 1 ? "tarefa" : "tarefas"} na lista`;
+}
+
+function mostrarAviso() {
+    alert("Adicionei a função de editar a tarefa depois de feita e um botão para limpar as tarefas concluídas.");
 }
 
 // MODO ESCURO
@@ -111,4 +143,6 @@ botaoTema.addEventListener("click", function () {
     } else {
         botaoTema.innerHTML = `<i class="fa-solid fa-moon"></i>`;
     }
+
+
 });
